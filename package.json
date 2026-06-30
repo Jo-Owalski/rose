@@ -1,0 +1,32 @@
+{
+  "name": "rose",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "healthcheck": "node scripts/healthcheck.mjs",
+    "promote:admin": "node scripts/promote-admin.mjs",
+    "test:admin-crud": "node scripts/test-admin-crud.mjs",
+    "seed:orders": "node scripts/seed-orders.mjs",
+    "test:business-settings": "node scripts/test-business-settings.mjs",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@supabase/ssr": "0.12.0",
+    "@supabase/supabase-js": "2.108.2",
+    "lucide-react": "0.468.0",
+    "next": "16.2.9",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.5",
+    "@types/react": "19.0.2",
+    "@types/react-dom": "19.0.2",
+    "eslint": "9.17.0",
+    "eslint-config-next": "16.2.9",
+    "typescript": "5.7.2"
+  }
+}
