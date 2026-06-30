@@ -11,26 +11,28 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
 
   return (
     <main>
-      <section className="container hero">
-        <div>
-          <p className="eyebrow">{copy.home.eyebrow}</p>
-          <h1>{copy.home.title}</h1>
-          <p className="lead">{copy.home.lead}</p>
-          <div className="hero-actions">
-            <Link className="button primary" href={`/${locale}/menu`}>
-              <CakeSlice size={18} />
-              {copy.home.primary}
-            </Link>
-            <Link className="button" href={`/${locale}/product/birthday-cake`}>
-              <CalendarHeart size={18} />
-              {copy.home.secondary}
-            </Link>
+      <section className="home-hero">
+        <div className="container hero">
+          <div className="hero-copy">
+            <p className="eyebrow">{copy.home.eyebrow}</p>
+            <h1>{copy.home.title}</h1>
+            <p className="lead">{copy.home.lead}</p>
+            <div className="hero-actions">
+              <Link className="button primary" href={`/${locale}/menu`}>
+                <CakeSlice size={18} />
+                {copy.home.primary}
+              </Link>
+              <Link className="button" href={`/${locale}/product/birthday-cake`}>
+                <CalendarHeart size={18} />
+                {copy.home.secondary}
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className="hero-photo" role="img" aria-label="Assorted pastries on a bakery counter">
-          <div className="hero-photo-note">
-            <strong>{copy.home.heroTitle}</strong>
-            <span>{copy.home.heroText}</span>
+          <div className="hero-photo" role="img" aria-label="Assorted pastries on a bakery counter">
+            <div className="hero-photo-note">
+              <strong>{copy.home.heroTitle}</strong>
+              <span>{copy.home.heroText}</span>
+            </div>
           </div>
         </div>
       </section>
