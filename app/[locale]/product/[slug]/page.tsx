@@ -12,7 +12,7 @@ export default async function ProductPage({ params }: { params: Promise<{ locale
   const copy = t(locale);
 
   return (
-    <main className="container detail">
+    <main className="container section section-alt detail">
       <img src={product.imageUrl} alt={product.name[locale]} />
       <section className="panel">
         <span className={`badge ${product.availability}`}>{availabilityLabel(product.availability, locale)}</span>

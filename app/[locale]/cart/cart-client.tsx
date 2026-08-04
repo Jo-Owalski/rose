@@ -10,7 +10,7 @@ export function CartClient({ locale }: { locale: Locale }) {
   const copy = t(locale);
 
   return (
-    <main className="container section">
+    <main className="container section section-alt">
       <div className="section-heading">
         <div>
           <p className="eyebrow">Rose</p>

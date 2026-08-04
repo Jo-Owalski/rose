@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CalendarHeart, CakeSlice, Truck } from "lucide-react";
+import { CalendarHeart, CakeSlice, Coffee, Croissant, IceCream, Truck } from "lucide-react";
 import { ProductCard } from "@/components/ProductCard";
 import { type Locale, t } from "@/lib/i18n";
 import { getFeaturedStorefrontProducts, getStorefrontCategories } from "@/lib/storefront";
@@ -17,6 +17,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
             <p className="eyebrow">{copy.home.eyebrow}</p>
             <h1>{copy.home.title}</h1>
             <p className="lead">{copy.home.lead}</p>
+            <div className="hero-chips">
+              <span className="hero-chip">
+                <Croissant size={16} />
+                Croissants chauds
+              </span>
+              <span className="hero-chip">
+                <IceCream size={16} />
+                Gâteaux fondants
+              </span>
+              <span className="hero-chip">
+                <Coffee size={16} />
+                Boîtes gourmandes
+              </span>
+            </div>
             <div className="hero-actions">
               <Link className="button primary" href={`/${locale}/menu`}>
                 <CakeSlice size={18} />
@@ -54,7 +68,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
         </div>
       </section>
 
-      <section className="container section">
+      <section className="container section section-alt">
         <div className="section-heading">
           <div>
             <p className="eyebrow">Collections</p>

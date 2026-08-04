@@ -8,11 +8,16 @@ export default async function MenuPage({ params }: { params: Promise<{ locale: L
   const [categories, products] = await Promise.all([getStorefrontCategories(), getStorefrontProducts()]);
 
   return (
-    <main className="container section">
-      <p className="eyebrow">Rose</p>
-      <h1>{copy.menu.title}</h1>
-      <p className="lead">{copy.menu.lead}</p>
-      <MenuSearch products={products} categories={categories} locale={locale} placeholder={copy.menu.search} />
+    <main className="container">
+      <section className="menu-hero section section-alt">
+        <p className="eyebrow">Rose</p>
+        <h1>{copy.menu.title}</h1>
+        <p className="lead">{copy.menu.lead}</p>
+      </section>
+
+      <section className="section">
+        <MenuSearch products={products} categories={categories} locale={locale} placeholder={copy.menu.search} />
+      </section>
     </main>
   );
 }

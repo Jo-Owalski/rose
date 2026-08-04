@@ -231,15 +231,15 @@ export const dictionary = {
     },
     home: {
       eyebrow: "Commande de boulangerie Soft Rose",
-      title: "Patisseries, gateaux et plats chaleureux a commander simplement.",
+      title: "Patisseries dorées, gâteaux fondants et plats chaleureux à commander simplement.",
       lead:
-        "Parcourez les produits de boulangerie, gateaux d'anniversaire personnalises, boites de patisseries et futures offres africaines et europeennes. Preparez un panier, choisissez ramassage ou livraison, puis envoyez la demande par WhatsApp ou courriel.",
-      primary: "Voir le menu",
-      secondary: "Planifier un gateau",
-      heroTitle: "Boite signature Rose",
-      heroText: "Patisseries selectionnees et gateaux de celebration avec confirmation de ramassage ou livraison.",
+        "Craquez pour un univers de pâtisseries dorées, gâteaux fondants, boîtes gourmandes et futures offres africaines et européennes. Préparez votre panier, choisissez ramassage ou livraison, puis envoyez votre commande par WhatsApp ou courriel.",
+      primary: "Découvrir le menu",
+      secondary: "Planifier un gâteau",
+      heroTitle: "Boîte signature Rose",
+      heroText: "Une sélection de douceurs raffinées, tartes et gâteaux de fête à déguster en ramassage ou en livraison.",
       featured: "Offres en vedette",
-      categories: "Magasiner par categorie",
+      categories: "Magasiner par catégorie",
       fulfillmentTitle: "Ramassage et livraison confirmes manuellement",
       fulfillmentText:
         "Rose sauvegarde la demande et prepare un message clair. L'entreprise confirme la disponibilite, le prix final et les details avant d'accepter la commande."
