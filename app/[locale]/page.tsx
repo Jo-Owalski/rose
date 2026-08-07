@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { CalendarHeart, CakeSlice, Coffee, Croissant, IceCream, Truck } from "lucide-react";
 import { ProductCard } from "@/components/ProductCard";
+
+import { CategoryStaticList } from "@/components/CategoryStaticList";
 import { type Locale, t } from "@/lib/i18n";
 import { getFeaturedStorefrontProducts, getStorefrontCategories } from "@/lib/storefront";
 
@@ -11,47 +13,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
 
   return (
     <main>
-      <section className="home-hero">
-        <div className="container hero">
-          <div className="hero-copy">
-            <p className="eyebrow">{copy.home.eyebrow}</p>
-            <h1>{copy.home.title}</h1>
-            <p className="lead">{copy.home.lead}</p>
-            <div className="hero-chips">
-              <span className="hero-chip">
-                <Croissant size={16} />
-                Croissants chauds
-              </span>
-              <span className="hero-chip">
-                <IceCream size={16} />
-                Gâteaux fondants
-              </span>
-              <span className="hero-chip">
-                <Coffee size={16} />
-                Boîtes gourmandes
-              </span>
-            </div>
-            <div className="hero-actions">
-              <Link className="button primary" href={`/${locale}/menu`}>
-                <CakeSlice size={18} />
-                {copy.home.primary}
-              </Link>
-              <Link className="button" href={`/${locale}/product/birthday-cake`}>
-                <CalendarHeart size={18} />
-                {copy.home.secondary}
-              </Link>
-            </div>
-          </div>
-          <div className="hero-photo" role="img" aria-label="Assorted pastries on a bakery counter">
-            <div className="hero-photo-note">
-              <strong>{copy.home.heroTitle}</strong>
-              <span>{copy.home.heroText}</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="container section">
+      {/* Static Hero Section */}
+      <section className="hero-static">
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80" alt="Bakery hero" loading="lazy" className="hero-static-image" />
+      </section>    <section className="container section">
         <div className="section-heading">
           <div>
             <p className="eyebrow">Rose</p>
@@ -68,22 +33,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
         </div>
       </section>
 
-      <section className="container section section-alt">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">Collections</p>
-            <h2>{copy.home.categories}</h2>
-          </div>
-        </div>
-        <div className="category-grid">
-          {categories.map((category) => (
-            <Link className="category-card" href={`/${locale}/category/${category.slug}`} key={category.id}>
-              <strong>{category.name[locale]}</strong>
-              <span className="muted">{category.description[locale]}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
+<section className="container section">
+  <div className="section-heading">
+    <h2>Categories</h2>
+  </div>
+  <CategoryStaticList categories={categories} locale={locale} />
+</section>
 
       <section className="container section">
         <div className="panel">
