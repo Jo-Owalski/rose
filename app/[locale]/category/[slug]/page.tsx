@@ -10,11 +10,13 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
   const categoryProducts = await getStorefrontProductsByCategory(slug);
 
   return (
-    <main className="container section">
-      <p className="eyebrow">Collection</p>
-      <h1>{category.name[locale]}</h1>
-      <p className="lead">{category.description[locale]}</p>
-      <div className="grid">
+    <main className="container section category-page">
+      <section className="panel category-header">
+        <p className="eyebrow">Collection</p>
+        <h1>{category.name[locale]}</h1>
+        <p className="lead">{category.description[locale]}</p>
+      </section>
+      <div className="grid menu-grid category-products">
         {categoryProducts.map((product) => (
           <ProductCard key={product.id} product={product} locale={locale} />
         ))}

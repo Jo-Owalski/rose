@@ -47,7 +47,7 @@ export function MenuSearch({
 
   return (
     <>
-      <div className="toolbar">
+      <div className="toolbar menu-search-toolbar">
         <label className="search-wrap">
           <Search size={18} />
           <input className="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={placeholder} />
@@ -57,7 +57,7 @@ export function MenuSearch({
         </div>
       </div>
 
-      <section className="filters" aria-label={copy.menu.filters}>
+      <section className="filters menu-search-filters" aria-label={copy.menu.filters}>
         <label className="filter-field">
           <span>{copy.nav.categories}</span>
           <span className="select-control">
@@ -72,7 +72,7 @@ export function MenuSearch({
           </span>
         </label>
         <label className="filter-field">
-          <span>Type</span>
+          <span>{locale === "fr" ? "Type" : "Type"}</span>
           <span className="select-control">
             <select value={productType} onChange={(event) => setProductType(event.target.value as FilterValue | ProductType)}>
               <option value="all">{copy.menu.allTypes}</option>
@@ -83,7 +83,7 @@ export function MenuSearch({
           </span>
         </label>
         <label className="filter-field">
-          <span>Status</span>
+          <span>{locale === "fr" ? "Disponibilité" : "Status"}</span>
           <span className="select-control">
             <select value={availability} onChange={(event) => setAvailability(event.target.value as FilterValue | Availability)}>
               <option value="all">{copy.menu.allAvailability}</option>
@@ -93,7 +93,7 @@ export function MenuSearch({
             </select>
           </span>
         </label>
-        <button className="button" type="button" onClick={resetFilters}>
+        <button className="button primary filter-action-button" type="button" onClick={resetFilters}>
           {copy.menu.reset}
         </button>
       </section>

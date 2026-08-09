@@ -1,4 +1,4 @@
-"use client";
+""use client";
 
 import { Mail, MessageCircle } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
@@ -29,12 +29,12 @@ export function CheckoutClient({ businessSettings, locale }: { businessSettings:
             hello: "Bonjour, je souhaite passer une commande.",
             name: "Nom",
             contact: "Contact",
-            method: "Methode",
-            preferred: "Date/heure souhaitee",
+            method: "Méthode",
+            preferred: "Date/heure souhaitée",
             items: "Articles",
             notes: "Notes",
-            total: "Total estime",
-            confirm: "Merci de confirmer la disponibilite, le prix final et les details de ramassage/livraison."
+            total: "Total estimé",
+            confirm: "Merci de confirmer la disponibilité, le prix final et les détails de ramassage/livraison."
           }
         : {
             hello: "Hello, I would like to place an order.",
@@ -84,8 +84,8 @@ export function CheckoutClient({ businessSettings, locale }: { businessSettings:
 
   function validateCheckout() {
     if (!form.name.trim()) return locale === "fr" ? "Le nom est requis." : "Customer name is required.";
-    if (!form.phone.trim() && !form.email.trim()) return locale === "fr" ? "Ajoute un telephone ou un courriel." : "Add a phone or email.";
-    if (!form.preferred) return locale === "fr" ? "La date/heure souhaitee est requise." : "Preferred date/time is required.";
+    if (!form.phone.trim() && !form.email.trim()) return locale === "fr" ? "Ajoute un téléphone ou un courriel." : "Add a phone or email.";
+    if (!form.preferred) return locale === "fr" ? "La date/heure souhaitée est requise." : "Preferred date/time is required.";
     if (fulfillment === "delivery" && !form.address.trim()) return locale === "fr" ? "L'adresse de livraison est requise." : "Delivery address is required.";
     if (!businessSettings.whatsappNumber && !businessSettings.orderEmail) {
       return locale === "fr" ? "Configure WhatsApp ou le courriel dans Settings." : "Configure WhatsApp or email in Settings.";
@@ -121,7 +121,7 @@ export function CheckoutClient({ businessSettings, locale }: { businessSettings:
       return;
     }
     if (!businessSettings.whatsappNumber) {
-      setError(locale === "fr" ? "Configure le numero WhatsApp dans Settings." : "Configure the WhatsApp number in Settings.");
+      setError(locale === "fr" ? "Configure le numéro WhatsApp dans Settings." : "Configure the WhatsApp number in Settings.");
       return;
     }
     await saveOrder("whatsapp");
@@ -145,13 +145,17 @@ export function CheckoutClient({ businessSettings, locale }: { businessSettings:
   }
 
   return (
-    <main className="container section">
-      <p className="eyebrow">Rose</p>
-      <h1>{copy.checkout.title}</h1>
-      <p className="lead">{copy.checkout.lead}</p>
+    <main className="container section checkout-page">
+      <section className="section-heading checkout-heading">
+        <div>
+          <p className="eyebrow">Rose</p>
+          <h1>{copy.checkout.title}</h1>
+          <p className="lead">{copy.checkout.lead}</p>
+        </div>
+      </section>
 
-      <form className="detail">
-        <section className="panel form-grid">
+      <form className="detail checkout-detail">
+        <section className="panel form-grid checkout-form-panel">
           <label className="field">
             <span>{copy.checkout.name}</span>
             <input required value={form.name} onChange={(event) => updateField("name", event.target.value)} placeholder="Marie Dupont" />
@@ -185,7 +189,7 @@ export function CheckoutClient({ businessSettings, locale }: { businessSettings:
             <span>{copy.checkout.notes}</span>
             <textarea value={form.notes} onChange={(event) => updateField("notes", event.target.value)} />
           </label>
-          <div className="row-actions">
+          <div className="row-actions checkout-actions">
             {error && <p className="form-error">{error}</p>}
             <button className="button primary" onClick={openWhatsApp} disabled={items.length === 0} type="submit">
               <MessageCircle size={18} />
@@ -198,7 +202,7 @@ export function CheckoutClient({ businessSettings, locale }: { businessSettings:
           </div>
         </section>
 
-        <aside className="panel">
+        <aside className="panel checkout-summary-panel">
           <h2>{copy.cart.subtotal}</h2>
           <p className="price">{formatMoney(subtotalCents, locale)}</p>
           <pre className="message-preview">{message}</pre>

@@ -39,6 +39,7 @@ type CategoryRow = {
   name_fr: string;
   description_en: string | null;
   description_fr: string | null;
+  image_url: string | null;
   sort_order: number | null;
   is_active: boolean | null;
 };
@@ -52,6 +53,7 @@ function mapCategory(row: CategoryRow): Category {
       en: row.description_en ?? "",
       fr: row.description_fr ?? ""
     },
+    imageUrl: row.image_url ?? undefined,
     sortOrder: row.sort_order ?? 0
   };
 }
@@ -93,7 +95,7 @@ export async function getStorefrontCategories(): Promise<Category[]> {
 
   const { data, error } = await supabase
     .from("categories")
-    .select("id, slug, name_en, name_fr, description_en, description_fr, sort_order, is_active")
+    .select("id, slug, name_en, name_fr, description_en, description_fr, image_url, sort_order, is_active")
     .eq("is_active", true)
     .order("sort_order", { ascending: true });
 

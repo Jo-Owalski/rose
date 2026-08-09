@@ -10,7 +10,7 @@ export function CartClient({ locale }: { locale: Locale }) {
   const copy = t(locale);
 
   return (
-    <main className="container section section-alt">
+    <main className="container section cart-page">
       <div className="section-heading">
         <div>
           <p className="eyebrow">Rose</p>
@@ -25,14 +25,14 @@ export function CartClient({ locale }: { locale: Locale }) {
       </div>
 
       {items.length === 0 ? (
-        <div className="panel">
+        <div className="panel empty-cart-panel">
           <p className="lead">{copy.cart.empty}</p>
           <Link className="button primary" href={`/${locale}/menu`}>
             {copy.nav.menu}
           </Link>
         </div>
       ) : (
-        <div className="detail">
+        <div className="detail cart-detail-layout">
           <div className="cart-list">
             {items.map((item) => (
               <article className="cart-item" key={item.productId}>
@@ -80,7 +80,7 @@ export function CartClient({ locale }: { locale: Locale }) {
               </article>
             ))}
           </div>
-          <aside className="panel">
+          <aside className="panel cart-summary-panel">
             <h2>{copy.cart.subtotal}</h2>
             <p className="price">{formatMoney(subtotalCents, locale)}</p>
             <Link className="button primary" href={`/${locale}/checkout`}>

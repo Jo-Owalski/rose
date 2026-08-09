@@ -8,6 +8,7 @@ export type Category = {
   slug: string;
   name: Record<Locale, string>;
   description: Record<Locale, string>;
+  imageUrl?: string;
   sortOrder: number;
 };
 
@@ -35,6 +36,7 @@ export const categories: Category[] = [
       en: "Fresh breads, rolls, and everyday bakery staples.",
       fr: "Pains frais, petits pains et essentiels de boulangerie."
     },
+    imageUrl: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80",
     sortOrder: 1
   },
   {
@@ -45,6 +47,7 @@ export const categories: Category[] = [
       en: "Croissants, rolls, tarts, and sweet pastry favorites.",
       fr: "Croissants, brioches, tartelettes et douceurs favorites."
     },
+    imageUrl: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80",
     sortOrder: 2
   },
   {
@@ -55,6 +58,7 @@ export const categories: Category[] = [
       en: "Birthday cakes, custom cakes, and celebration orders.",
       fr: "Gateaux d'anniversaire, gateaux personnalises et celebrations."
     },
+    imageUrl: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=800&q=80",
     sortOrder: 3
   },
   {
@@ -65,6 +69,7 @@ export const categories: Category[] = [
       en: "Curated pastry boxes and group packs for events.",
       fr: "Boites de patisseries et ensembles pour evenements."
     },
+    imageUrl: "https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?auto=format&fit=crop&w=800&q=80",
     sortOrder: 4
   },
   {
@@ -75,6 +80,7 @@ export const categories: Category[] = [
       en: "Future warm food offers inspired by African kitchens.",
       fr: "Futures offres chaudes inspirees des cuisines africaines."
     },
+    imageUrl: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80",
     sortOrder: 5
   },
   {
@@ -85,6 +91,7 @@ export const categories: Category[] = [
       en: "Future savory European food and catering additions.",
       fr: "Futures additions salees europeennes et traiteur."
     },
+    imageUrl: "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=800&q=80",
     sortOrder: 6
   }
 ];

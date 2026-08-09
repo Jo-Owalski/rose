@@ -14,9 +14,9 @@ export function availabilityLabel(status: Product["availability"], locale: Local
     },
     fr: {
       available: "Disponible",
-      "sold-out": "Epuise",
+      "sold-out": "Épuisé",
       seasonal: "Saisonnier",
-      hidden: "Cache"
+      hidden: "Caché"
     }
   };
 
@@ -33,10 +33,14 @@ export function productPrice(product: Product, locale: Locale) {
 
 export function ProductCard({ product, locale }: { product: Product; locale: Locale }) {
   return (
-    <article className="card">
+    <article className="card product-card">
       <Link className="product-media" href={`/${locale}/product/${product.slug}`}>
         <img className="product-image" src={product.imageUrl} alt={product.name[locale]} />
+        <span className={`badge ${product.availability} product-badge`}>
+          {availabilityLabel(product.availability, locale)}
+        </span>
       </Link>
+
       <div className="card-body">
         <div className="status-row">
           <span className={`badge ${product.availability}`}>{availabilityLabel(product.availability, locale)}</span>
@@ -46,7 +50,7 @@ export function ProductCard({ product, locale }: { product: Product; locale: Loc
         <p className="muted">{product.description[locale]}</p>
         <div className="price-row">
           <Link className="pill-link" href={`/${locale}/product/${product.slug}`}>
-            <ArrowRight size={16} /> Details
+            <ArrowRight size={16} /> {locale === "fr" ? "Détails" : "Details"}
           </Link>
           <AddToCartButton product={product} locale={locale} compact />
         </div>

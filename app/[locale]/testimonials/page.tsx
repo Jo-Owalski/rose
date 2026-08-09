@@ -5,18 +5,18 @@ import { getVisibleSocialPosts } from "@/lib/social";
 const testimonials = [
   {
     name: "Marie D.",
-    occasion: { en: "Birthday cake", fr: "Gateau d'anniversaire" },
+    occasion: { en: "Birthday cake", fr: "Gâteau d'anniversaire" },
     quote: {
       en: "The cake felt personal, elegant, and fresh. The WhatsApp order made the details easy to confirm.",
-      fr: "Le gateau etait personnel, elegant et frais. La commande WhatsApp a facilite la confirmation des details."
+      fr: "Le gâteau était personnel, élégant et frais. La commande WhatsApp a facilité la confirmation des détails."
     }
   },
   {
     name: "Amina K.",
-    occasion: { en: "Pastry box", fr: "Boite de patisseries" },
+    occasion: { en: "Pastry box", fr: "Boîte de pâtisseries" },
     quote: {
       en: "The pastry box looked beautiful on the table and everything was clearly packed for pickup.",
-      fr: "La boite de patisseries etait superbe sur la table et tout etait bien prepare pour le ramassage."
+      fr: "La boîte de pâtisseries était superbe sur la table et tout était bien préparé pour le ramassage."
     }
   },
   {
@@ -24,7 +24,7 @@ const testimonials = [
     occasion: { en: "Office treats", fr: "Gourmandises bureau" },
     quote: {
       en: "Simple ordering, warm presentation, and the croissants disappeared fast.",
-      fr: "Commande simple, presentation chaleureuse, et les croissants sont partis tres vite."
+      fr: "Commande simple, présentation chaleureuse, et les croissants sont partis très vite."
     }
   }
 ];
@@ -36,7 +36,7 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
 
   return (
     <main>
-      <section className="container testimonials-hero">
+      <section className="container testimonials-hero testimonials-hero-page">
         <div>
           <p className="eyebrow">{copy.testimonials.eyebrow}</p>
           <h1>{copy.testimonials.title}</h1>
@@ -46,14 +46,14 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
           <Quote size={34} />
           <p>
             {locale === "fr"
-              ? "Une experience douce, claire et soignee, du premier message jusqu'a la boite finale."
+              ? "Une expérience douce, claire et soignée, du premier message jusqu'à la boîte finale."
               : "A soft, clear, polished experience from the first message to the final box."}
           </p>
         </div>
       </section>
 
       <section className="container section">
-        <div className="testimonial-grid">
+        <div className="testimonial-grid testimonials-grid">
           {testimonials.map((item) => (
             <article className="testimonial-card" key={item.name}>
               <div className="star-row" aria-label="5 stars">
@@ -71,7 +71,7 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
         </div>
       </section>
 
-      <section className="container section">
+      <section className="container section testimonials-gallery-section">
         <div className="section-heading">
           <div>
             <p className="eyebrow">Instagram / TikTok</p>
@@ -99,7 +99,7 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
             })}
           </div>
         ) : (
-          <div className="social-empty">
+          <div className="social-empty social-empty-page">
             <div>
               <Instagram size={24} />
               <Clapperboard size={24} />
@@ -107,7 +107,7 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
             <h3>{locale === "fr" ? "Galerie en attente des comptes officiels" : "Gallery waiting for official accounts"}</h3>
             <p>
               {locale === "fr"
-                ? "Ajoute les liens des vrais posts Instagram/TikTok ou connecte les APIs sociales. Aucun contenu stock ne sera affiche ici."
+                ? "Ajoute les liens des vrais posts Instagram/TikTok ou connecte les APIs sociales. Aucun contenu stock ne sera affiché ici."
                 : "Add real Instagram/TikTok post links or connect the social APIs. No stock content will be shown here."}
             </p>
           </div>
