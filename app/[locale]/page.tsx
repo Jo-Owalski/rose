@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { Truck } from "lucide-react";
+import { CalendarHeart, CakeSlice, Truck, ArrowRight } from "lucide-react";
 import { ProductCard } from "@/components/ProductCard";
-import { CategoryStaticList } from "@/components/CategoryStaticList";
 import { type Locale, t } from "@/lib/i18n";
 import { getFeaturedStorefrontProducts, getStorefrontCategories } from "@/lib/storefront";
 
@@ -12,67 +11,77 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
 
   return (
     <main>
-      <section className="hero-static page-hero">
-        <img
-          src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80"
-          alt="Bakery hero"
-          loading="lazy"
-          className="hero-static-image"
-        />
-        <div className="container hero-copy">
-          <div className="hero-content">
-            <p className="eyebrow">Rose</p>
-            <h1>{locale === "fr" ? "Pâtisserie artisanale, conçue pour vous" : "Artisan pastry crafted for you"}</h1>
-            <p className="lead">{copy.home.fulfillmentText}</p>
+      {/* HERO SECTION - RESTRUCTURED */}
+      <section className="home-hero">
+        <div className="container hero">
+          <div className="hero-copy">
+            <span className="eyebrow">{copy.home.eyebrow}</span>
+            <h1>{copy.home.title}</h1>
+            <p className="lead">{copy.home.lead}</p>
             <div className="hero-actions">
               <Link className="button primary" href={`/${locale}/menu`}>
-                {copy.nav.menu}
+                <CakeSlice size={20} />
+                {copy.home.primary}
               </Link>
-              <Link className="button" href={`/${locale}/testimonials`}>
-                {copy.nav.testimonials}
+              <Link className="button" href={`/${locale}/product/birthday-cake`}>
+                <CalendarHeart size={20} />
+                {copy.home.secondary}
               </Link>
             </div>
           </div>
+          <div className="hero-photo" role="img" aria-label="Bakery counter" />
         </div>
       </section>
 
+      {/* COLLECTIONS GRID - PERFECT ALIGNMENT */}
       <section className="container section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Rose</p>
-            <h2>{copy.home.featured}</h2>
-            <p className="lead">{locale === "fr" ? "Nos favoris du moment" : "Our favorites right now"}</p>
+            <span className="eyebrow">Collections</span>
+            <h2>{locale === 'fr' ? 'Magasiner par catégorie' : 'Shop by category'}</h2>
           </div>
-          <Link className="pill-link" href={`/${locale}/menu`}>
-            {copy.nav.menu}
+        </div>
+        <div className="category-grid-custom">
+          {categories.map((category) => (
+            <Link className="category-card-custom" href={`/${locale}/category/${category.slug}`} key={category.id}>
+              <div className="category-card-custom-content">
+                <strong>{category.name[locale]}</strong>
+                <p>{category.description[locale]}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURED PRODUCTS - PERFECT ALIGNMENT */}
+      <section className="container section">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">Sélection</span>
+            <h2>{copy.home.featured}</h2>
+          </div>
+          <Link className="button" href={`/${locale}/menu`} style={{ padding: '8px 20px', minHeight: 'auto', background: 'transparent', border: '1px solid var(--border)' }}>
+            {copy.nav.menu} <ArrowRight size={14} />
           </Link>
         </div>
-
-        <div className="grid featured-products-grid">
+        <div className="grid">
           {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} locale={locale} />
           ))}
         </div>
       </section>
 
-      <section className="container section section-alt home-categories-section">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">{locale === "fr" ? "Collections" : "Collections"}</p>
-            <h2>{locale === "fr" ? "Nos catégories" : "Explore our categories"}</h2>
-            <p className="lead">{locale === "fr" ? "Des créations pensées pour chaque envie." : "Delightful creations made for every mood."}</p>
+      {/* INFORMATION PANEL */}
+      <section className="container section">
+        <div className="panel-modern">
+          <div className="eyebrow" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '20px' }}>
+            <Truck size={24} /> {locale === 'fr' ? 'Livraison & Retrait' : 'Delivery & Pickup'}
           </div>
-        </div>
-        <CategoryStaticList categories={categories} locale={locale} />
-      </section>
-
-      <section className="container section checkout-invite">
-        <div className="panel">
-          <p className="eyebrow">
-            <Truck size={15} /> {locale === "fr" ? "Confirmation manuelle" : "Manual confirmation"}
-          </p>
           <h2>{copy.home.fulfillmentTitle}</h2>
-          <p className="lead">{copy.home.fulfillmentText}</p>
+          <p className="lead" style={{ margin: '0 auto 40px', maxWidth: '750px' }}>{copy.home.fulfillmentText}</p>
+          <Link className="button primary" href={`/${locale}/menu`}>
+            {locale === 'fr' ? 'Parcourir le menu' : 'Browse the menu'}
+          </Link>
         </div>
       </section>
     </main>
